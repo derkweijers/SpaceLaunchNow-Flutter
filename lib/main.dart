@@ -11,7 +11,7 @@ import 'package:spacelaunchnow_flutter/views/launchlist/previous_launches_list_p
 import 'package:spacelaunchnow_flutter/views/launchlist/upcoming_launches_list_page.dart';
 import 'package:spacelaunchnow_flutter/views/settings/app_settings.dart';
 import 'package:spacelaunchnow_flutter/views/settings/settings_page.dart';
-import 'package:flutter_iap/flutter_iap.dart';
+import 'package:flutter_billing/flutter_billing.dart';
 
 void main() => runApp(new SpaceLaunchNow());
 
@@ -37,7 +37,6 @@ class Pages extends StatefulWidget {
 }
 
 class PagesState extends State<Pages> {
-
   bool showAds = false;
   TabController controller;
 
@@ -68,6 +67,7 @@ class PagesState extends State<Pages> {
   @override
   void initState() {
     super.initState();
+    Ads.init('ca-app-pub-9824528399164059/8172962746', testing: true);
     initAds();
     _prefs.then((SharedPreferences prefs) {
       bool nightMode = prefs.getBool("nightMode") ?? false;
@@ -232,7 +232,7 @@ class PagesState extends State<Pages> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     Ads.dispose();
     super.dispose();
   }
@@ -241,7 +241,9 @@ class PagesState extends State<Pages> {
     if (_configuration.nightMode) {
       return kIOSThemeDark;
     } else {
-        return defaultTargetPlatform == TargetPlatform.iOS ? kIOSTheme : kDefaultTheme;
+      return defaultTargetPlatform == TargetPlatform.iOS
+          ? kIOSTheme
+          : kDefaultTheme;
     }
   }
 
@@ -340,8 +342,7 @@ class PagesState extends State<Pages> {
         },
         home: new Scaffold(
             body: new PageStorage(
-                bucket: pageStorageBucket,
-                child: pageChooser()),
+                bucket: pageStorageBucket, child: pageChooser()),
 //            floatingActionButton: new Builder(builder: (BuildContext context) {
 //              return new FloatingActionButton(
 //                  backgroundColor: Colors.blue[400],
@@ -376,10 +377,7 @@ class PagesState extends State<Pages> {
                         title: new Text('Settings'),
                         icon: new Icon(Icons.settings)),
                   ],
-                )
-            )
-        )
-    );
+                ))));
   }
 
   void _navigateToLaunchDetails(int launchId) {
@@ -393,17 +391,22 @@ class PagesState extends State<Pages> {
   }
 
   initAds() async {
-    Ads.init('ca-app-pub-9824528399164059/8172962746', testing: true);
-    IAPResponse response = await FlutterIap.fetchProducts(["me.calebjones.spacelaunchnowflutter"]);
-    List<IAPProduct> productIds = response.products;
-    if (!mounted)
-      return;
-
-    setState(() {
-      if (productIds.length > 0){
-        Ads.showBannerAd();
+    final Billing billing = new Billing(onError: (e) {
+      print(e);
+    });
+    billing.getPurchases().then((purchases) {
+      if (purchases != null) {
+        print("Retrieved");
+        setState(() {
+          if (purchases.length <= 0) {
+            Ads.showBannerAd();
+          } else {
+            Ads.hideBannerAd();
+          }
+        });
       } else {
-        Ads.hideBannerAd();
+        print("Error getting purchases.");
+        Ads.showBannerAd();
       }
     });
   }

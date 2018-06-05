@@ -36,7 +36,7 @@ PODS:
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
   - Flutter (1.0.0)
-  - flutter_iap (0.0.1):
+  - flutter_billing (0.0.1):
     - Flutter
   - Google-Mobile-Ads-SDK (7.30.0)
   - GoogleMaps (2.7.0):
@@ -70,7 +70,7 @@ DEPENDENCIES:
   - firebase_analytics (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-1.0.0/ios`)
   - firebase_messaging (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.1/ios`)
   - Flutter (from `/Users/ALPCJONESM2/Development/flutter/bin/cache/artifacts/engine/ios`)
-  - flutter_iap (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_iap-1.1.0/ios`)
+  - flutter_billing (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_billing-0.2.2/ios`)
   - map_view (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/map_view-0.0.12/ios`)
   - share (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/share-0.4.0/ios`)
   - shared_preferences (from `/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.1/ios`)
@@ -98,8 +98,8 @@ EXTERNAL SOURCES:
     :path: "/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-1.0.1/ios"
   Flutter:
     :path: "/Users/ALPCJONESM2/Development/flutter/bin/cache/artifacts/engine/ios"
-  flutter_iap:
-    :path: "/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_iap-1.1.0/ios"
+  flutter_billing:
+    :path: "/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_billing-0.2.2/ios"
   map_view:
     :path: "/Users/ALPCJONESM2/Development/flutter/.pub-cache/hosted/pub.dartlang.org/map_view-0.0.12/ios"
   share:
@@ -119,7 +119,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
   FirebaseMessaging: f2360a966ecfb0d14facf0fbdf306efc2df0ddbe
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
-  flutter_iap: c134cf9ab8e60291931d13431cdae36f5e0724ae
+  flutter_billing: 0d1729942437371ed109944d57e435f820404b97
   Google-Mobile-Ads-SDK: 7404f68120ae8682afeb5af001fbf4aad731c78e
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
